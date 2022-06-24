@@ -6,15 +6,18 @@
     <li>Then, you can access the AdGuardHome web interface at: http://<AdGuardHome_Server_IP>:8081/</li>
     <li>IMPORTANT: In Listen Interfaces option choose eth0 (or another name, it depends on your system) and select next</li>
     <li>Set up username & password and then login admin panel (port :80)</li>
-    <li>IMPORTANT: In general settings, set "Query logs retention" to 24 hours. (I read that for some people logs fill up which slows down Pi and needing a reboot)</li>
+    <li>IMPORTANT: In general settings, set "Query logs retention" to 24 hours. 
+      (I read that for some people logs fill up which slows down Pi and needing a reboot)
+    </li>
     
-    <li>In AdGuard homepage under settings, select "DNS settings"</li>
-    <lo>
-      <li>Delete everything from both Upstream and Bootstrap DNS server options and add the following for:</li>
-      <li>DNS over TLS (Unbound) : 10.8.1.10:53</li>
-      <li>DNS over HTTPS/Oblivious DNS over HTTPS : 10.8.1.20:5053 (Cloudflared tunnel)</li>
-      <li>TLS forwarder (Stubby) : 10.8.1.30:5353</li>
-    </lo>
+    <li>In AdGuard homepage under settings, select "DNS settings"
+      <lo>
+        <li>Delete everything from both Upstream and Bootstrap DNS server options and add the following for:</li>
+        <li>DNS over TLS (Unbound) : 10.8.1.10:53</li>
+        <li>DNS over HTTPS/Oblivious DNS over HTTPS : 10.8.1.20:5053 (Cloudflared tunnel)</li>
+        <li>TLS forwarder (Stubby) : 10.8.1.30:5353</li>
+      </lo>
+    </li>
     <li>IMPORTANT: Check "Parallel Request" option for DNS resolvers to work simultaneously.</li>
     <li>Then in DNS setting look for DNS cache configuration section and set cache size to 0 (caching is already handled by Unbound) and click apply.</li>
     <li>Click apply and test upstream</li>
