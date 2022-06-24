@@ -2,7 +2,7 @@
 
 <p align="center">
   <ul>
-  <li>After configuring the docker-compose.yml file, you have to start the containers with: <code>docker-compose up -d</code></li>
+  <li>After configuring the docker-compose.yml and .env files, you have to start the containers with: <code>docker-compose up -d</code></li>
   <li>Then, you can access the AdGuardHome web interface at: <code>http://&lt;AdGuardHome_Server_IP&gt;:3000/</code></li>
   <li><code>IMPORTANT</code>: In Listen Interfaces option choose <code>eth0</code> (or another name, it depends on your system) and select next</li>
   <li>Set up <code>username</code> &amp; <code>password</code> and then login admin panel (port :80)</li>
