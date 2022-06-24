@@ -1,0 +1,110 @@
+---
+version: '3.8'
+
+services:
+
+  unbound:
+    env_file: .env
+    image: 'mvance/unbound-rpi:latest'
+    container_name: unbound
+    restart: unless-stopped
+    hostname: 'unbound'
+    ports:
+      - "53/tcp"
+      - "53/udp"
+    networks:
+      adguard_doh_dot_wireguard:
+        ipv4_address: 10.8.1.10
+
+  cloudflared:
+    env_file: .env
+    depends_on: [ unbound ]
+    image: visibilityspots/cloudflared:latest
+    container_name: cloudflared
+    restart: unless-stopped
+    hostname: cloudflared
+    expose:
+      - '5053/tcp'
+      - '5053/udp'
+    environment:
+      - PORT=5053
+      - UPSTREAM1=https://1.1.1.1/dns-query
+      - UPSTREAM2=https://1.0.0.1/dns-query
+    volumes:
+      - /etc/localtime:/etc/localtime
+    networks:
+      adguard_doh_dot_wireguard:
+        ipv4_address: 10.8.1.20
+
+  stubby:
+    env_file: .env
+    depends_on: [ unbound, cloudflared ]
+    image: iurimieras/stubby_armv7:latest
+    container_name: stubby
+    restart: unless-stopped
+    hostname: stubby
+    expose:
+      - 5353/udp
+      - 5353/tcp
+    networks:
+      adguard_doh_dot_wireguard:
+        ipv4_address: 10.8.1.30
+
+  adguardhome:
+    env_file: .env
+    depends_on: [ unbound, cloudflared, stubby ]
+    image: adguard/adguardhome:latest
+    container_name: adguardhome
+    restart: unless-stopped
+    hostname: adguardhome
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 784:784/udp
+      - 853:853/tcp
+      - 3000:3000/tcp
+      - ${ADGUARDHOME_WEB_INTERFACE_PORT}:80/tcp
+    volumes:
+      - ${ROOT_PATH}/adguard_doh_dot_wireguard/adguardhome/workdir:/opt/adguardhome/work
+      - ${ROOT_PATH}/adguard_doh_dot_wireguard/adguardhome/confdir:/opt/adguardhome/conf
+    cap_add:
+      - NET_ADMIN
+    networks:
+      adguard_doh_dot_wireguard:
+        ipv4_address: 10.8.1.40
+
+  wireguard:
+    env_file: .env
+    depends_on: [ unbound, stubby, adguardhome, cloudflared ]
+    image: weejewel/wg-easy:latest
+    container_name: wireguard
+    restart: unless-stopped
+    hostname: wireguard
+    environment:
+      - TZ=${TZ}
+      - WG_HOST=${WIREGUARD_DOMAIN}
+      - PASSWORD=${WIREGUARD_PASSWORD}
+      - WG_PORT=51820
+      - WG_DEFAULT_DNS=10.8.1.40
+      - WG_ALLOWED_IPS=0.0.0.0/1, 128.0.0.0/1, 192.168.0.0/32, ::/1, 8000::/1, 0.0.0.0/1
+    volumes:
+      - ${ROOT_PATH}/adguard_doh_dot_wireguard/wireguard:/etc/wireguard
+    ports:
+      - '51820:51820/udp'
+      - '${WIREGUARD_WEB_INTERFACE_PORT}:51821/tcp'
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.ip_forward=1
+      - net.ipv4.conf.all.src_valid_mark=1
+    networks:
+      adguard_doh_dot_wireguard:
+        ipv4_address: 10.8.1.50
+
+networks:
+  adguard_doh_dot_wireguard:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.8.1.0/24
