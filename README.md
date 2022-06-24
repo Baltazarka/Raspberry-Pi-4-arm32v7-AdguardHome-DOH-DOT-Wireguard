@@ -3,10 +3,10 @@
 <p align="center">
   <ul>
   <li>After configuring the docker-compose.yml and .env files, you have to start the containers with: <code>docker-compose up -d</code></li>
-  <li>Then, you can access the AdGuardHome web interface at: <code>http://&lt;AdGuardHome_Server_IP&gt;:8081/</code></li>
-    <li>Then, you can access the Wireguard web interface at: <code>http://&lt;Wireguard_Server_IP&gt;:8082/</code></li>
+  <li>Then, you can access the AdGuardHome web interface at: <code>http://&lt;Server_IP&gt;:8081/</code></li>
+    <li>Then, you can access the Wireguard web interface at: <code>http://&lt;Server_IP&gt;:8082/</code></li>
   <li><code>IMPORTANT</code>: In Listen Interfaces option choose <code>eth0</code> (or another name, it depends on your system) and select next</li>
-  <li>Set up <code>username</code> &amp; <code>password</code> and then login <code>http://&lt;AdGuardHome_Server_IP&gt;:80/</code></li>
+  <li>Set up <code>username</code> &amp; <code>password</code> and then login <code>http://&lt;Server_IP&gt;:80/</code></li>
   <li><code>IMPORTANT</code>: In general settings, set "Query logs retention" to 24 hours. (I read that for some people logs fill up which slows down Pi and needing a reboot)</li>
   <li>In AdGuard homepage under settings, select "DNS settings"
   <ul>
