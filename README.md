@@ -1,7 +1,7 @@
 <h3 align="center">Raspberry-Pi-4-arm32v7-AdguardHome-DOH-DHT-Wireguard</h3>
 
 <p align="center">
-  <lu>
+  <ul>
     <li>After configuring the docker-compose.yml and .env filee, you have to start the containers with: docker-compose up -d</li>
     <li>Then, you can access the AdGuardHome web interface at: http://<AdGuardHome_Server_IP>:8081/</li>
     <li>IMPORTANT: In Listen Interfaces option choose eth0 (or another name, it depends on your system) and select next</li>
@@ -21,7 +21,7 @@
     <li>IMPORTANT: Check "Parallel Request" option for DNS resolvers to work simultaneously.</li>
     <li>Then in DNS setting look for DNS cache configuration section and set cache size to 0 (caching is already handled by Unbound) and click apply.</li>
     <li>Click apply and test upstream</li>
-  </lu>
+  </ul>
 </p>
 
 <p align="center">
