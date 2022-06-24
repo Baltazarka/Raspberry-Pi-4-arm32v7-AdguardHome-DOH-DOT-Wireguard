@@ -3,13 +3,11 @@
 <p align="center">
   <table>
     <tr>
-      <td width="30%;">
+      <td width="50%;">
+          <img src="https://user-images.githubusercontent.com/50296997/175570800-38980dd5-7ef9-4755-9a9f-a2f146ec69f5.png">
           <img src="https://user-images.githubusercontent.com/50296997/175570912-0f8ecbc6-2b73-41f9-b1db-13cf29c1df81.png">
       </td>
-      <td width="30%;">
-          <img src="https://user-images.githubusercontent.com/50296997/175570800-38980dd5-7ef9-4755-9a9f-a2f146ec69f5.png">
-      </td>
-      <td width="40%;">
+      <td width="500%;">
           <img src="https://user-images.githubusercontent.com/50296997/175571556-ad189bd3-cf44-439a-8ca9-08132bc296fc.png">
       </td>
     </tr>
