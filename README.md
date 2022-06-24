@@ -30,7 +30,7 @@
           <img style="display: block;" align="center" src="https://user-images.githubusercontent.com/50296997/175570912-0f8ecbc6-2b73-41f9-b1db-13cf29c1df81.png">
       </td>
       <td width="50%;">
-          <code align="center">https://1.1.1.1/help</code>
+        <code align="center"><a href="https://1.1.1.1/help">ttps://1.1.1.1/help</a></code>
           <img style="display: block;" align="center" src="https://user-images.githubusercontent.com/50296997/175571556-ad189bd3-cf44-439a-8ca9-08132bc296fc.png">
       </td>
     </tr>
