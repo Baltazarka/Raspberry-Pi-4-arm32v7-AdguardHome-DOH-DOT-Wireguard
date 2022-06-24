@@ -17,7 +17,7 @@
         <li>Az AdGuard kezdőlapján a beállítások alatt válassza a „DNS-beállítások” lehetőséget.
             <ul>
                 <li>Töröljön mindent az <em><strong>Upstream DNS-kiszolgálók</strong></em> és a <em><strong>Bootstrap DNS kiszolgálók</strong></em>
-                    szerverbeállításokból, és adja hozzá a következőket:</li>
+                    szerverbeállításokból, és add hozzá a következőket:</li>
                 <li>DNS over TLS (Unbound) : <code>10.8.1.10:53</code></li>
                 <li>DNS over HTTPS/Oblivious DNS over HTTPS : <code>10.8.1.20:5053</code> (Cloudflared
                     tunnel)</li>
