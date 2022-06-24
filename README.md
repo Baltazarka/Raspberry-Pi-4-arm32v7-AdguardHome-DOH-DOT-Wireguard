@@ -2,26 +2,23 @@
 
 <p align="center">
   <ul>
-    <li>After configuring the docker-compose.yml and .env filee, you have to start the containers with: docker-compose up -d</li>
-    <li>Then, you can access the AdGuardHome web interface at: http://<AdGuardHome_Server_IP>:8081/</li>
-    <li>IMPORTANT: In Listen Interfaces option choose eth0 (or another name, it depends on your system) and select next</li>
-    <li>Set up username & password and then login admin panel (port :80)</li>
-    <li>IMPORTANT: In general settings, set "Query logs retention" to 24 hours. 
-      (I read that for some people logs fill up which slows down Pi and needing a reboot)
-    </li>
-    
-    <li>In AdGuard homepage under settings, select "DNS settings"
-      <ul>
-        <li>Delete everything from both Upstream and Bootstrap DNS server options and add the following for:</li>
-        <li>DNS over TLS (Unbound) : 10.8.1.10:53</li>
-        <li>DNS over HTTPS/Oblivious DNS over HTTPS : 10.8.1.20:5053 (Cloudflared tunnel)</li>
-        <li>TLS forwarder (Stubby) : 10.8.1.30:5353</li>
-      </ul>
-    </li>
-    <li>IMPORTANT: Check "Parallel Request" option for DNS resolvers to work simultaneously.</li>
-    <li>Then in DNS setting look for DNS cache configuration section and set cache size to 0 (caching is already handled by Unbound) and click apply.</li>
-    <li>Click apply and test upstream</li>
+  <li>After configuring the docker-compose.yml file, you have to start the containers with: <code>docker-compose up -d</code></li>
+  <li>Then, you can access the AdGuardHome web interface at: <code>http://&lt;AdGuardHome_Server_IP&gt;:3000/</code></li>
+  <li><code>IMPORTANT</code>: In Listen Interfaces option choose <code>eth0</code> (or another name, it depends on your system) and select next</li>
+  <li>Set up <code>username</code> &amp; <code>password</code> and then login admin panel (port :80)</li>
+  <li><code>IMPORTANT</code>: In general settings, set "Query logs retention" to 24 hours. (I read that for some people logs fill up which slows down Pi and needing a reboot)</li>
+  <li>In AdGuard homepage under settings, select "DNS settings"
+  <ul>
+  <li>Delete everything from both <em><strong>Upstream</strong></em> and <em><strong>Bootstrap DNS</strong></em> server options and add the following for:</li>
+  <li>DNS over TLS (Unbound) : <code>10.8.1.10:53</code></li>
+  <li>DNS over HTTPS/Oblivious DNS over HTTPS : <code>10.8.1.20:5053</code> (Cloudflared tunnel)</li>
+  <li>TLS forwarder (Stubby) : <code>10.8.1.30:5353</code></li>
   </ul>
+  </li>
+  <li><code>IMPORTANT:</code> Check "<a href="https://adguard.com/en/blog/in-depth-review-adguard-home.html#dns"><b>Parallel Request</b></a>" option for DNS resolvers to work simultaneously.</li>
+  <li>Then in DNS setting look for DNS cache configuration section and set cache size to 0 (caching is already handled by Unbound) and click apply.</li>
+  <li>Click apply and test upstreams</li>
+</ul>
 </p>
 
 <p align="center">
