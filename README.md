@@ -11,12 +11,12 @@
     </li>
     
     <li>In AdGuard homepage under settings, select "DNS settings"
-      <lo>
+      <ul>
         <li>Delete everything from both Upstream and Bootstrap DNS server options and add the following for:</li>
         <li>DNS over TLS (Unbound) : 10.8.1.10:53</li>
         <li>DNS over HTTPS/Oblivious DNS over HTTPS : 10.8.1.20:5053 (Cloudflared tunnel)</li>
         <li>TLS forwarder (Stubby) : 10.8.1.30:5353</li>
-      </lo>
+      </ul>
     </li>
     <li>IMPORTANT: Check "Parallel Request" option for DNS resolvers to work simultaneously.</li>
     <li>Then in DNS setting look for DNS cache configuration section and set cache size to 0 (caching is already handled by Unbound) and click apply.</li>
