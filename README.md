@@ -2,23 +2,23 @@
 
 <p align="center">
   <ul>
-  <li>After configuring the docker-compose.yml and .env files, you have to start the containers with: <code>docker-compose up -d</code></li>
-  <li>Then, you can access the AdGuardHome web interface at: <code>http://&lt;Server_IP&gt;:8081/</code></li>
-    <li>Then, you can access the Wireguard web interface at: <code>http://&lt;Server_IP&gt;:8082/</code></li>
-  <li><code>IMPORTANT</code>: In Listen Interfaces option choose <code>eth0</code> (or another name, it depends on your system) and select next</li>
-  <li>Set up <code>username</code> &amp; <code>password</code> and then login <code>http://&lt;Server_IP&gt;:80/</code></li>
-  <li><code>IMPORTANT</code>: In general settings, set "Query logs retention" to 24 hours. (I read that for some people logs fill up which slows down Pi and needing a reboot)</li>
-  <li>In AdGuard homepage under settings, select "DNS settings"
+  <li>A docker-compose.yml és .env fájlok konfigurálása után a tárolókat a következővel kell elindítani: <code>docker-compose up -d</code></li>
+  <li>Ezután elérheti az AdGuardHome webes felületét a következő címen: <code>http://&lt;Server_IP&gt;:8081/</code></li>
+    <li>Ezután elérheti a Wireguard webes felületét a következő címen: <code>http://&lt;Server_IP&gt;:8082/</code></li>
+  <li><code>FONTOS</code>: A Listen Interfaces opcióban válassza az <code>eth0</code> lehetőséget (vagy egy másik nevet, ez a rendszertől függ), majd válassza a következőt</li>
+  <li>A <code>felhasználónév</code> &amp; <code>jelszó</code>, majd jelentkezzen be <code>http://&lt;Server_IP&gt;:80/</code></li>
+  <li><code>FONTOS</code>: Általános beállításokban állítsa a „Lekérdezési naplók megőrzése” lehetőséget 24 órára. (Olvastam, hogy egyesek számára a naplók megtelnek, ami lelassítja a Pi-t, és újraindításra van szükség)</li>
+  <li>Az AdGuard kezdőlapján a beállítások alatt válassza a „DNS-beállítások” lehetőséget.
   <ul>
-  <li>Delete everything from both <em><strong>Upstream</strong></em> and <em><strong>Bootstrap DNS</strong></em> server options and add the following for:</li>
-  <li>DNS over TLS (Unbound) : <code>10.8.1.10:53</code></li>
-  <li>DNS over HTTPS/Oblivious DNS over HTTPS : <code>10.8.1.20:5053</code> (Cloudflared tunnel)</li>
-  <li>TLS forwarder (Stubby) : <code>10.8.1.30:5353</code></li>
+  <li>Töröljön mindent az <em><strong>Upstream</strong></em> és a <em><strong>Bootstrap DNS</strong></em> szerverbeállításokból, és adja hozzá a következőket:</li >
+  <li>DNS TLS-n keresztül (korlátozás nélkül): <code>10.8.1.10:53</code></li>
+  <li>DNS HTTPS-n keresztül/Feledő DNS HTTPS-n keresztül : <code>10.8.1.20:5053</code> (Cloudflared alagút)</li>
+  <li>TLS továbbító (Stubby): <code>10.8.1.30:5353</code></li>
   </ul>
   </li>
-  <li><code>IMPORTANT:</code> Check "<a href="https://adguard.com/en/blog/in-depth-review-adguard-home.html#dns"><b>Parallel Request</b></a>" option for DNS resolvers to work simultaneously.</li>
-  <li>Then in DNS setting look for DNS cache configuration section and set cache size to 0 (caching is already handled by Unbound) and click apply.</li>
-  <li>Click apply and test upstreams</li>
+  <li><code>FONTOS:</code> Ellenőrizze a „<a href="https://adguard.com/en/blog/in-depth-review-adguard-home.html#dns"><b>Párhuzamos Kérje</b></a>" opciót, hogy a DNS-feloldók egyidejűleg működjenek.</li>
+  <li>Ezután a DNS-beállításokban keresse meg a DNS-gyorsítótár konfigurációs szakaszát, és állítsa a gyorsítótár méretét 0-ra (a gyorsítótárazást már kezeli az Unbound), majd kattintson az Alkalmaz gombra.</li>
+  <li>Kattintson az Alkalmaz gombra, és tesztelje az upstreameket</li>
 </ul>
 </p>
 
