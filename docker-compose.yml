@@ -86,7 +86,7 @@ services:
       - PASSWORD=${WIREGUARD_PASSWORD}
       - WG_PORT=51820
       - WG_DEFAULT_DNS=10.8.1.40
-      - WG_ALLOWED_IPS=0.0.0.0/1, 128.0.0.0/1, 192.168.0.0/32, ::/1, 8000::/1, 0.0.0.0/1
+      - WG_ALLOWED_IPS=192.168.0.0/24, 10.8.1.0/24
     volumes:
       - ${ROOT_PATH}/adguard_doh_dot_wireguard/wireguard:/etc/wireguard
     ports:
