@@ -1,4 +1,4 @@
-<h3 align="center">Raspberry-Pi-4-arm32v7-AdguardHome-DOH-DHT-Wireguard</h3>
+<h3 align="center">Raspberry-Pi-4-arm32v7-AdguardHome-DOH-DOT-Wireguard</h3>
 
 <p align="center">
     <ul>
